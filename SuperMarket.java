@@ -10,6 +10,7 @@ import java.util.Scanner;
     private List<Item> items = new ArrayList<>();
 
     public static void main(String[] args) {
+         //Create a market object
         SuperMarket market = new SuperMarket();
         market.loadItems();
 
@@ -26,7 +27,8 @@ import java.util.Scanner;
 
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline left-over
-
+             
+           //use Switch statement for selecting the choices
             switch (choice) {
                 case 1:
                     market.listAllItems();
@@ -48,6 +50,7 @@ import java.util.Scanner;
     }
 
     private void loadItems() {
+         //creating file 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILENAME))) {
             String line;
 
@@ -65,6 +68,7 @@ import java.util.Scanner;
     }
 
     private void saveItems() {
+         //save the objects into a file
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILENAME))) {
             for (Item item : items) {
                 String line = String.format("%s,%d,%s", item.getName(), item.getQuantity(),
@@ -78,6 +82,7 @@ import java.util.Scanner;
     }
 
     private void listAllItems() {
+         //list items that were saved into file
         if (items.isEmpty()) {
             System.out.println("No items found!");
         } else {
@@ -89,6 +94,7 @@ import java.util.Scanner;
     }
 
     private void addItem(Scanner scanner) {
+         //add items into file that entered by user
         System.out.print("Enter item name: ");
         String name = scanner.nextLine();
 
@@ -104,6 +110,7 @@ import java.util.Scanner;
     }
 
     private void removeItem(Scanner scanner) {
+         //remove items from that file entered by user
         System.out.print("Enter item name to remove: ");
         String name = scanner.nextLine();
 
@@ -151,4 +158,5 @@ import java.util.Scanner;
         }
     }
 }
+
 
